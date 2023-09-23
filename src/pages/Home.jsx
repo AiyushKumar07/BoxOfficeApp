@@ -1,34 +1,22 @@
 import { useState } from 'react';
 import { searchForShows, searchForPeople } from '../api/tvmaze';
+import SearchForm from '../components/SearchForm';
 
 const Home = () => {
-  const [searchStr, setSearchStr] = useState('');
-
   const [apiData, setapiData] = useState(null);
-
   const [apiDataError, setapiDataError] = useState(null);
 
-  const [searchOption, setsearchOption] = useState('show');
-
-  const onRadioChange = ev => {
-    setsearchOption(ev.target.value);
-  };
-
-  const onSearchInputChange = ev => {
-    setSearchStr(ev.target.value);
-  };
-
-  const onSearch = async ev => {
-    ev.preventDefault();
+  const onSearch = async ({ q, searchOption }) => {
     try {
       setapiDataError(null);
-      if (searchOption === 'show') {
-        const result = await searchForShows(searchStr);
-        setapiData(result);
-      } else {
-        const result = await searchForPeople(searchStr);
-        setapiData(result);
-      }
+
+      let result;
+
+      searchOption === 'show'
+        ? (result = await searchForShows(q))
+        : (result = await searchForPeople(q));
+
+      setapiData(result);
     } catch (error) {
       setapiDataError(error);
     }
@@ -50,30 +38,7 @@ const Home = () => {
 
   return (
     <>
-      <form onSubmit={onSearch}>
-        <input type="text" value={searchStr} onChange={onSearchInputChange} />
-        <label>
-          Shows
-          <input
-            type="radio"
-            name="search-option"
-            value="show"
-            checked={searchOption === 'show'}
-            onChange={onRadioChange}
-          />
-        </label>
-        <label>
-          Actors
-          <input
-            type="radio"
-            name="search-option"
-            value="actors"
-            checked={searchOption === 'actors'}
-            onChange={onRadioChange}
-          />
-        </label>
-        <button type="submit">Search</button>
-      </form>
+      <SearchForm onSearch={onSearch} />
       <div>{renderApiData()}</div>
     </>
   );
