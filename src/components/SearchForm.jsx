@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 const SearchForm = ({ onSearch }) => {
   const [searchStr, setSearchStr] = useState('');
-  const [searchOption, setsearchOption] = useState('show');
+  const [searchOption, setsearchOption] = useState('shows');
 
   const onRadioChange = ev => {
     setsearchOption(ev.target.value);
@@ -31,8 +31,8 @@ const SearchForm = ({ onSearch }) => {
         <input
           type="radio"
           name="search-option"
-          value="show"
-          checked={searchOption === 'show'}
+          value="shows"
+          checked={searchOption === 'shows'}
           onChange={onRadioChange}
         />
       </label>
