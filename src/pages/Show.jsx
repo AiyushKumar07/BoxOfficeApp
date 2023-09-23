@@ -2,9 +2,8 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getShowById } from '../api/tvmaze';
 
-const Show = () => {
-  const { showId } = useParams();
-
+//Custom Hooks => Can be used Somewhere Else
+const useShowById = showId => {
   const [showData, setshowData] = useState(null);
   const [showError, setshowError] = useState(null);
 
@@ -21,12 +20,21 @@ const Show = () => {
     fetchData();
   }, [showId]);
 
+  return { showData, showError };
+};
+
+const Show = () => {
+  const { showId } = useParams();
+  const { showError, showData } = useShowById(showId);
+
   if (showError) {
     return <div>We hava an Error:{showError.message}</div>;
   }
+
   if (showData) {
     return <div>Got Show data:{showData.name}</div>;
   }
+
   return <div>Data is Loading...</div>;
 };
 
