@@ -8,7 +8,7 @@ const ShowMainData = ({ image, name, rating, summary, genres }) => {
         Genres:
         <div>
           {genres.map(genre => (
-            <span key={genre}>{genre}</span>
+            <span key={genre}>{genre} </span>
           ))}
         </div>
       </div>
