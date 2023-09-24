@@ -1,4 +1,4 @@
-import { useStarredShow } from '../../lib/useStarredShow';
+import { useStarredShows } from '../../lib/useStarredShows';
 import ShowCard from './ShowCard';
 
 // const usePresistedReducer = (reducer, initialState, localStorageKey) => {
@@ -27,7 +27,7 @@ import ShowCard from './ShowCard';
 // };
 
 const ShowGrid = ({ shows }) => {
-  const { starredShows, dispatchStarred } = useStarredShow();
+  const [starredShows, dispatchStarred] = useStarredShows();
 
   const onStarMeClick = showId => {
     const isStarred = starredShows.includes(showId);

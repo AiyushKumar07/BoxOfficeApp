@@ -24,6 +24,6 @@ const starredShowsReducer = (currentStarred, action) => {
       return currentStarred;
   }
 };
-export const useStarredShow = () => {
+export const useStarredShows = () => {
   return usePresistedReducer(starredShowsReducer, [], 'starredShows');
 };
