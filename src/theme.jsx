@@ -1,8 +1,6 @@
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 
 const theme = {
-  //   fontFamily: 'Roboto, sans-serif',
-  //   fontFamily: 'Cinzel, serif',
   fontFamily: 'Roboto Slab, serif',
   mainColors: {
     blue: '#2400ff',
@@ -19,7 +17,6 @@ const GlobalStyles = createGlobalStyle`
     padding-top: 40px;
     padding-left: 15px;
     padding-right: 15px;
-    padding-bottom: 40px;
   }
 `;
 

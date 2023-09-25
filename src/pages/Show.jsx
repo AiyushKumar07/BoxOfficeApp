@@ -76,6 +76,10 @@ const Show = () => {
           <h2>Cast: </h2>
           <Cast cast={showData._embedded.cast} />
         </InfoBlock>
+        <TextCenter style={{ paddingTop: '20px' }}>
+          Created By @{' '}
+          <a href="https://github.com/AiyushKumar07">Aiyush Kumar</a>
+        </TextCenter>
       </ShowPageWrapper>
     );
   }
@@ -100,6 +104,11 @@ const BackHomeWrapper = styled.div`
 
 const ShowPageWrapper = styled.div`
   margin: auto;
+  margin-bottom: 40px;
+  padding: 10px 100px;
+  border-radius: 20px;
+  box-shadow: 0 15px 25px rgba(129, 124, 124, 0.5);
+  background-color: transparent;
   @media only screen and (min-width: 768px) {
     max-width: 700px;
   }
