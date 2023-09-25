@@ -1,10 +1,12 @@
-import { Link, useParams } from 'react-router-dom';
-import { getShowById } from '../api/tvmaze';
 import { useQuery } from '@tanstack/react-query';
-import ShowMainData from '../components/shows/ShowMainData';
+import { Link, useParams } from 'react-router-dom';
+import styled from 'styled-components';
+import { getShowById } from '../api/tvmaze';
+import Cast from '../components/shows/Cast';
 import Details from '../components/shows/Details';
 import Seasons from '../components/shows/Seasons';
-import Cast from '../components/shows/Cast';
+import ShowMainData from '../components/shows/ShowMainData';
+import { TextCenter } from '../components/common/TextCenter';
 
 //Custom Hooks => Can be used Somewhere Else
 // import { useEffect, useState } from 'react';
@@ -43,10 +45,12 @@ const Show = () => {
 
   if (showData) {
     return (
-      <div>
-        <Link type="button" to="/">
-          Go Back to Home
-        </Link>
+      <ShowPageWrapper>
+        <BackHomeWrapper>
+          <Link type="button" to="/">
+            Go Back to Home
+          </Link>
+        </BackHomeWrapper>
 
         <ShowMainData
           image={showData.image}
@@ -56,27 +60,59 @@ const Show = () => {
           genres={showData.genres}
         />
 
-        <div>
+        <InfoBlock>
           <h2>Details</h2>
           <Details
             status={showData.status}
             premiered={showData.premiered}
             network={showData.network}
           />
-        </div>
-        <div>
+        </InfoBlock>
+        <InfoBlock>
           <h2>Seasons: </h2>
           <Seasons seasons={showData._embedded.seasons} />
-        </div>
-        <div>
+        </InfoBlock>
+        <InfoBlock>
           <h2>Cast: </h2>
           <Cast cast={showData._embedded.cast} />
-        </div>
-      </div>
+        </InfoBlock>
+      </ShowPageWrapper>
     );
   }
 
-  return <div>Data is Loading...</div>;
+  return <TextCenter>Data is Loading...</TextCenter>;
 };
 
 export default Show;
+
+const BackHomeWrapper = styled.div`
+  margin-bottom: 30px;
+  text-align: left;
+  a {
+    padding: 10px;
+    color: ${({ theme }) => theme.mainColors.dark};
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+`;
+
+const ShowPageWrapper = styled.div`
+  margin: auto;
+  @media only screen and (min-width: 768px) {
+    max-width: 700px;
+  }
+  @media only screen and (min-width: 992px) {
+    max-width: 900px;
+  }
+`;
+
+const InfoBlock = styled.div`
+  margin-bottom: 40px;
+  h2 {
+    margin: 0;
+    margin-bottom: 30px;
+    font-size: 22px;
+  }
+`;
