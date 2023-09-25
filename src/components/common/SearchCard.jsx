@@ -15,9 +15,14 @@ export const SearchImgWrapper = styled.div`
 
 export const SearchCard = styled.div`
   width: 300px;
-  height: 100%;
-  margin: 0 15px 40px;
+  height: 580px;
+  padding: 20px;
+  margin: 10px 10px;
+  border-radius: 20px;
+  box-shadow: 0 15px 25px rgba(129, 124, 124, 0.5);
+  background-color: transparent;
   h1 {
+    text-align: center;
     margin: 10px 0;
     font-size: 21px;
   }
