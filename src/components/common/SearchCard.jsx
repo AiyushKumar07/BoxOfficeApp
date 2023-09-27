@@ -20,11 +20,17 @@ export const SearchCard = styled.div`
   margin: 10px 10px;
   border-radius: 20px;
   box-shadow: 0 15px 25px rgba(129, 124, 124, 0.5);
-  background-color: transparent;
+  background-image: radial-gradient(
+    circle 588px at 31.7% 40.2%,
+    rgba(225, 200, 239, 1) 21.4%,
+    rgba(163, 225, 233, 1) 57.1%
+  );
+  border: 5px outset white;
+  color: black;
   h1 {
     text-align: center;
     margin: 10px 0;
-    font-size: 21px;
+    font-size: 20px;
   }
   p {
     margin-top: 0;

@@ -17,13 +17,27 @@ const TitleWrapper = styled.div`
   text-align: center;
   margin: 0 0 40px;
   h1 {
-    color: ${({ theme }) => theme.mainColors.blue};
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
     letter-spacing: 10px;
     text-transform: uppercase;
     margin: 0 0 10px;
+    background-image: linear-gradient(
+      to right,
+      #09f1b8,
+      #00a2ff,
+      #ff00d2,
+      #fed90f
+    );
+    color: #000119;
+    font-size: 10vmin;
+    font-weight: 700;
+    -webkit-text-stroke-color: transparent;
+    -webkit-text-stroke-width: calc(1em / 15);
   }
   p {
-    color: ${({ theme }) => theme.mainColors.dark};
+    color: white;
     margin: 0;
   }
 `;
