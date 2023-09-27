@@ -94,7 +94,7 @@ const BackHomeWrapper = styled.div`
   text-align: left;
   a {
     padding: 10px;
-    color: ${({ theme }) => theme.mainColors.dark};
+    color: gray;
     text-decoration: none;
     &:hover {
       text-decoration: underline;

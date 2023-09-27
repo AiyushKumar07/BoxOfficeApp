@@ -85,7 +85,7 @@ const Headline = styled.div`
 `;
 
 const Summary = styled.div`
-  color: #5f5f5f;
+  color: white;
   line-height: 1.5;
 `;
 
